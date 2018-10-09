@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ruleset name="PSR2ZF1">
+    <description>The PSR2ZF1 coding standard.</description>
+    <rule ref="PSR1">
+        <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+        <exclude name="PSR1.Classes.ClassDeclaration.OpenBraceNewLine"/>
+    </rule>
+    <rule ref="PSR2">
+        <!-- Allow using tab for indent -->
+        <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
+        <!-- Allow putting the open brace in the same line of the class declaration -->
+        <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine"/>
+        <!-- Allow putting the open brace in the same line of the function declaration -->
+        <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+    </rule>
+    <!-- Disable using space for indent -->
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+
+    <!-- Require putting the open brace in the same line of the function declaration -->
+    <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="true"/>
+        </properties>
+    </rule>
+</ruleset>
