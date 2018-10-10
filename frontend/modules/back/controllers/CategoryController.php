@@ -17,7 +17,57 @@ class CategoryController extends BaseController
 	public function actionIndex()
     {
         $model = new Categroy();
-        $list = $model->find()->where(['id'=>1])->asArray()->all();
-        return $this->render('list',['list'=>$list]);
+        $list = $model->find()->where(['del'=>0])->asArray()->all();
+        $tree = $model->getTree($list);
+        return $this->render('list',['list'=>$tree]);
     }
+    
+    
+    public function  actionAdd()
+    {
+    	$id = \Yii::$app->request->get('id',0);
+	    $model = new Categroy();
+    	if(\Yii::$app->request->isPost){
+    	    $name = \Yii::$app->request->post('name',null);
+    	    if(!empty($name)){
+    	        $model->name=trim($name);
+    	        $model->f_id=empty($id)?0:$id;
+    	        $model->sort=empty($id)?1:$id;
+    	        $model->level=empty($id)?1:2;
+		        if($model->save()){
+		            $this->redirect(array('/back/category/index'));
+		        }else{
+		        	var_dump($model->errors);
+		        	exit;
+		        }
+	        }
+	    }
+    	$f_info = $model->find()->where(['id'=>$id])->asArray()->one();
+        return $this->render('add',['info'=>$f_info]);
+    }
+    
+    public function actionUpdate()
+    {
+	    return $this->render('update');
+    }
+    
+    public function  actionDelete()
+    {
+	    $id = \Yii::$app->request->get('id',0);
+	    $model = new Categroy();
+	    $info = $model->find()->where(['id'=>$id])->one();
+	    $info_ = $model->find()->where(['f_id'=>$id,'del'=>0])->one();
+	    if(!empty($info_)){
+		    $this->redirect(array('/back/category/index'));
+		    exit;
+	    }
+	    $info->del = 1;
+	    if($info->save()){
+		    $this->redirect(array('/back/category/index'));
+	    }else{
+		    var_dump($model->errors);
+		    exit;
+	    }
+    }
+    
 }

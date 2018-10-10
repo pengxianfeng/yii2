@@ -13,6 +13,7 @@ use yii\widgets\Menu;
 use yii\helpers\Url;
 
 AppAsset::register($this);
+$this->title = "小试菜刀";
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -85,9 +86,9 @@ AppAsset::register($this);
                         <li><a href="?r=back/user/index">账户信息</a></li>
                         <li><a href="#">订单列表</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">用户列表</a></li>
+                        <li><a href="?r=back/member/index">用户列表</a></li>
                            <li class="divider"></li>
-                        <li><a href="#">分类列表</a></li>
+                        <li><a href="?r=back/category/index">分类列表</a></li>
                            <li class="divider"></li>
                         <li><a href="#">商品列表</a></li>
                         <li class="divider"></li>

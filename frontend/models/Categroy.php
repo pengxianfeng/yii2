@@ -48,4 +48,23 @@ class Categroy extends \yii\db\ActiveRecord
             'sort' => 'Sort',
         ];
     }
+    
+    public function getTree($list)
+    {
+    	$new_list = [];
+        foreach($list as $k=>$v){
+        	if($v['level']==1){
+        		$chile = [];
+		        foreach($list as $k_=>$x){
+		        	if($x['f_id'] == $v['id']){
+				        $chile[] = $x;
+			        }
+		        }
+		        $v['list'] = $chile;
+		        $new_list[]= $v;
+	        }
+        }
+        return $new_list;
+    }
+    
 }
