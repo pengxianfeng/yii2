@@ -11,8 +11,6 @@ $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
-   
-
     <p>Please fill out the following fields to signup:</p>
 
     <div class="row">
