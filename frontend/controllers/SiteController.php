@@ -170,7 +170,8 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+//            return $this->goHome();
+	        return $this->redirect(array('/back/base/index'));
         }
 
         $model = new LoginForm();
@@ -240,9 +241,9 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+//                if (Yii::$app->getUser()->login($user)) {
+//                    return $this->goHome();
+//                }
             }
         }
 
@@ -281,19 +282,22 @@ class SiteController extends Controller
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
+//    public function actionResetPassword($token)
+    public function actionResetPassword()
     {
-        try {
-            $model = new ResetPasswordForm($token);
-        } catch (InvalidParamException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
+//        try {
+//            $model = new ResetPasswordForm($token);
+//        } catch (InvalidParamException $e) {
+//            throw new BadRequestHttpException($e->getMessage());
+//        }
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password saved.');
-
-            return $this->goHome();
-        }
+//        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+//            Yii::$app->session->setFlash('success', 'New password saved.');
+//
+//            return $this->goHome();
+//        }
+	    $model = new ResetPasswordForm();
+	    $model->findByID(1);
 
         return $this->render('resetPassword', [
             'model' => $model,
