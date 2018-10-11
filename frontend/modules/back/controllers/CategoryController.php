@@ -48,7 +48,22 @@ class CategoryController extends BaseController
     
     public function actionUpdate()
     {
-	    return $this->render('update');
+	    $id = \Yii::$app->request->get('id',0);
+	    $model = new Categroy();
+	    $info = $model->find()->where(['id'=>$id])->asArray()->one();
+	    if(\Yii::$app->request->isPost){
+		    $name = \Yii::$app->request->post('name',null);
+		    if(!empty($name)){
+			    $info->name=trim($name);
+			    if($info->save()){
+				    $this->redirect(array('/back/category/index'));
+			    }else{
+				    var_dump($info->errors);
+				    exit;
+			    }
+		    }
+	    }
+	    return $this->render('update',['info'=>$info]);
     }
     
     public function  actionDelete()
@@ -69,5 +84,4 @@ class CategoryController extends BaseController
 		    exit;
 	    }
     }
-    
 }
