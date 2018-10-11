@@ -5,17 +5,18 @@
     <!--		--><?php // } ?>
     <!--    </ul>-->
     <div class="panel panel-default">
-        <div class="panel-heading">会员列表</div>
+        <div class="panel-heading">会员订单</div>
         <table class="table">
-            <tr><th>ID</th><th>用户名</th><th>操作</th></tr>
+            <tr><th>ID</th><th>订单号</th><th>总金额</th><th>实际支付金额</th><th>减免金额</th><th>操作</th></tr>
 			<?php foreach($list as $key=>$val){ ?>
                 <tr  >
                     <td  ><?=$val['id'] ?> </td>
-                    <td  ><?=$val['name'] ?> </td>
+                    <td  ><?=$val['order_sn'] ?> </td>
+                    <td  ><?=$val['price'] ?> </td>
+                    <td  ><?=$val['real_price'] ?> </td>
+                    <td  ><?=$val['free_price'] ?> </td>
                     <td >
-                        <a href="?r=back/member/update&id=<?=$val['id'] ?>">修改</a>
-                        <a href="?r=back/member/order&id=<?=$val['id'] ?>">订单</a>
-                        <a href="?r=back/member/address&id=<?=$val['id'] ?>">地址信息</a>
+                        <a href="#">详情</a>
                     </td>
                 </tr>
 			<?php  } ?>
