@@ -84,7 +84,7 @@ $this->title = "小试菜刀";
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="?r=back/user/index">账户信息</a></li>
-                        <li><a href="#">订单列表</a></li>
+                        <li><a href="?r=back/order/index">订单列表</a></li>
                         <li class="divider"></li>
                         <li><a href="?r=back/member/index">用户列表</a></li>
                            <li class="divider"></li>

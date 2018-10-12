@@ -1,4 +1,3 @@
-
     $(".dropcate").click(function () {
         alert('aaaaaaaa');
     });

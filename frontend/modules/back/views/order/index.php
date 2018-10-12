@@ -11,7 +11,7 @@
                     <td  ><?=$val['real_price'] ?> </td>
                     <td  ><?=$val['free_price'] ?> </td>
                     <td >
-                        <a href="#">详情</a>
+                        <a href="?r=back/order/order-detail&id=<?=$val['id'] ?>">详情</a>
                     </td>
                 </tr>
 			<?php  } ?>
